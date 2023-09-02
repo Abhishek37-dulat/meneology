@@ -47,7 +47,6 @@ import { getAllPost } from "./redux/actions/PostAction";
 
 function App() {
   const dispatch = useDispatch();
-  const { ProductData } = useSelector((state) => state.ProductReducer);
   const { accountStatus, setUserDetails, account, userDetails } =
     useContext(DataContext);
 
