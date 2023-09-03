@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
-import ReactImageMagnify from "react-image-magnify";
 import { useNavigate, useParams, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 // import { DLT, ADD, REMOVE } from "../redux/actions/action";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import env from "react-dotenv";
+// import ReactImageMagnifier from "react-image-magnifier";
+import ReactImgZoom from "react-img-zoom";
+
 import {
   ADD,
   DecreaseItem,
@@ -18,6 +19,7 @@ import {
 // import CustomerComments from "./CustomerComments";
 // import ProductColor from "./ProductColor";
 import { getSingleProduct } from "../redux/actions/productAction";
+// import ZoomCom from "./ZoomCom";
 
 const CardsDetails = () => {
   const history = useNavigate();
@@ -26,7 +28,7 @@ const CardsDetails = () => {
   const [changeImage, setChangeImage] = useState(0);
   const [toggleAddToCart, setToggleAddToCart] = useState(true);
   const [localData, setLocalData] = useState();
-
+  const [zoomed, setZoomed] = useState(false);
   const { id } = useParams();
 
   const dispatch = useDispatch();
@@ -110,23 +112,9 @@ const CardsDetails = () => {
                 })}
               </div>
               <div className="items_img">
-                <ReactImageMagnify
-                  {...{
-                    smallImage: {
-                      alt: "ourprod1",
-                      isFluidWidth: true,
-                      src: `${process.env.REACT_APP_BACKEND_URL}/images/${singleProduct?.product_image[changeImage]}`,
-                    },
-                    largeImage: {
-                      src: `${process.env.REACT_APP_BACKEND_URL}/images/${singleProduct?.product_image[changeImage]}`,
-                      width: 1200,
-                      height: 1800,
-                    },
-                    lensStyle: {
-                      width: 360,
-                      height: 200,
-                    },
-                  }}
+                <img
+                  src={`${process.env.REACT_APP_BACKEND_URL}/images/${singleProduct?.product_image[changeImage]}`}
+                  alt="sadada"
                 />
               </div>
               <div className="details">
